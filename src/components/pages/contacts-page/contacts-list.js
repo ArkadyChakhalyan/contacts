@@ -1,4 +1,4 @@
-import { List, Typography, ListItem } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import { Contact } from './contact';
 
 export const ContactsList = ({ searchFilter, contacts }) => {
@@ -58,15 +58,7 @@ export const ContactsList = ({ searchFilter, contacts }) => {
                     })
                     .sort((a, b) => compare(a.firstName, b.firstName))
                     .map((contact) => {
-                        return (
-                            <ListItem
-                                key={contact.id}
-                                button
-                                sx={{p: 0}}
-                            >
-                                <Contact contact={contact} />
-                            </ListItem>
-                        )
+                        return <Contact key={contact.id} contact={contact} />;
                     })
             }
         </List>

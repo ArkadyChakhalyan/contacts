@@ -1,7 +1,7 @@
 import {
     Avatar,
     IconButton,
-    Box,
+    ListItem,
     ListItemAvatar,
     ListItemText,
 } from "@mui/material";
@@ -12,7 +12,7 @@ import { ContactPopup } from "./popups/contact-popup";
 
 export const Contact = ({ contact }) => {
 
-    const { firstName, lastName, number, shortName, image } = contact;
+    const { firstName, lastName, number, shortName, image, id } = contact;
 
     const displayName = lastName ? `${firstName} ${lastName}` : firstName;
 
@@ -49,37 +49,41 @@ export const Contact = ({ contact }) => {
                 contact={contact}
                 editedPressed={editedPressed}
             />
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    p: 2
-                }}
+            <ListItem
+                key={id}
+                button
                 onClick={onPopupOpen}
             >
-                <ListItemAvatar>
-                    <Avatar src={image}>
-                        {image ? '' : shortName}
-                    </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={displayName} secondary={number} />
-                <IconButton
-                    edge="end"
-                    aria-label="Меню"
-                    onClick={onMenuOpen}
-                >
-                    <MoreIcon />
-                </IconButton>
-                <ContactMenu
-                    open={menuOpen}
-                    onClose={onMenuClose}
-                    anchor={anchor}
-                    contact={contact}
-                    onPopupOpen={onPopupOpen}
-                    pressEdited={() => setEditedPressed(true)}
-                />
-            </Box>
+            {/* <Box
+            sx={{
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+            p: 2
+        }} */}
+        
+            <ListItemAvatar>
+            <Avatar src={image}>
+        {image?'': shortName}
+            </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={displayName} secondary={number} />
+            <IconButton
+            edge="end"
+            aria-label="Меню"
+            onClick={onMenuOpen}
+            >
+            <MoreIcon />
+            </IconButton>
+            <ContactMenu
+            open={menuOpen}
+            onClose={onMenuClose}
+            anchor={anchor}
+            contact={contact}
+            onPopupOpen={onPopupOpen}
+            pressEdited={() => setEditedPressed(true)}
+            />
+            </ ListItem>
         </Fragment>
     );
 };

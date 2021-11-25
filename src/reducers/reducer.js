@@ -48,7 +48,7 @@ const onAddContact = (contact, state) => {
         shortName: firstName[0],
         number: number
     }
-    console.log(state)
+    
     const newContacts = [
         ...contacts,
         newContact
