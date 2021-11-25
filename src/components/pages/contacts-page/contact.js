@@ -52,37 +52,38 @@ export const Contact = ({ contact }) => {
             <ListItem
                 key={id}
                 button
+                sx={{ p: 2 }}
                 onClick={onPopupOpen}
             >
-            {/* <Box
+                {/* <Box
             sx={{
             display: 'flex',
             alignItems: 'center',
             width: '100%',
             p: 2
         }} */}
-        
-            <ListItemAvatar>
-            <Avatar src={image}>
-        {image?'': shortName}
-            </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={displayName} secondary={number} />
-            <IconButton
-            edge="end"
-            aria-label="Меню"
-            onClick={onMenuOpen}
-            >
-            <MoreIcon />
-            </IconButton>
-            <ContactMenu
-            open={menuOpen}
-            onClose={onMenuClose}
-            anchor={anchor}
-            contact={contact}
-            onPopupOpen={onPopupOpen}
-            pressEdited={() => setEditedPressed(true)}
-            />
+
+                <ListItemAvatar>
+                    <Avatar src={image}>
+                        {image ? '' : shortName}
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={displayName} secondary={number} />
+                <IconButton
+                    edge="end"
+                    aria-label="Меню"
+                    onClick={onMenuOpen}
+                >
+                    <MoreIcon />
+                </IconButton>
+                <ContactMenu
+                    open={menuOpen}
+                    onClose={onMenuClose}
+                    anchor={anchor}
+                    contact={contact}
+                    onPopupOpen={onPopupOpen}
+                    pressEdited={() => setEditedPressed(true)}
+                />
             </ ListItem>
         </Fragment>
     );
