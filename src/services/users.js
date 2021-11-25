@@ -4,19 +4,19 @@ export const users = [
         password: 'password',
         contacts: [
             {
-                id: 0,
-                firstName: 'Дмитрий',
-                lastName: 'Иванов',
-                shortName: 'Д',
-                number: '+79991234567',
-                picture: null
-            },
-            {
                 id: 1,
                 firstName: 'Алена',
                 lastName: 'Петрова',
                 shortName: 'А',
                 number: '+79211234567',
+                picture: null
+            },
+            {
+                id: 0,
+                firstName: 'Дмитрий',
+                lastName: 'Иванов',
+                shortName: 'Д',
+                number: '+79991234567',
                 picture: null
             },
             {
