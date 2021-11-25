@@ -4,7 +4,7 @@ export const users = [
         password: 'password',
         contacts: [
             {
-                id: 1,
+                id: 0,
                 firstName: 'Алена',
                 lastName: 'Петрова',
                 shortName: 'А',
@@ -12,7 +12,7 @@ export const users = [
                 picture: null
             },
             {
-                id: 0,
+                id: 1,
                 firstName: 'Дмитрий',
                 lastName: 'Иванов',
                 shortName: 'Д',

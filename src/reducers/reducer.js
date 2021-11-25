@@ -1,10 +1,10 @@
 const initialState = {
     user: null,
-    id: 3
+    uniqueId: 3
 };
 
 export const reducer = (state = initialState, action) => {
-
+    
     switch (action.type) {
         case 'ON_LOGIN':
             return onLogin(action.user, state);
@@ -37,18 +37,18 @@ const onLogout = (state) => {
 
 const onAddContact = (contact, state) => {
 
-    let { user, id } = state;
+    let { user, uniqueId } = state;
     const { contacts } = user;
     const { firstName, lastName, number } = contact;
 
     const newContact = {
-        id: id,
+        id: uniqueId,
         firstName: firstName,
         lastName: lastName,
         shortName: firstName[0],
         number: number
     }
-
+    console.log(state)
     const newContacts = [
         ...contacts,
         newContact
@@ -56,10 +56,10 @@ const onAddContact = (contact, state) => {
 
     return {
         ...state,
-        id: id++,
+        uniqueId: uniqueId++,
         user: {
             ...user,
-            contacts: newContacts.sort((a, b) => a.firstName - b.firstName)
+            contacts: newContacts
         }
     };
 };
@@ -83,7 +83,7 @@ const onEditContact = (contact, id, state) => {
         ...state,
         user: {
             ...user,
-            contacts: newContacts.sort((a, b) => a.firstName - b.firstName)
+            contacts: newContacts
         }
     };
 };

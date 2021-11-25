@@ -1,4 +1,4 @@
-import { List, Typography } from '@mui/material';
+import { List, Typography, ListItem } from '@mui/material';
 import { Contact } from './contact';
 
 export const ContactsList = ({ searchFilter, contacts }) => {
@@ -8,7 +8,7 @@ export const ContactsList = ({ searchFilter, contacts }) => {
             <Typography
                 variant="subtitle1"
                 align='center'
-                sx={{mt: 2}}
+                sx={{ mt: 2 }}
             >
                 Добавь свой первый контакт!
             </Typography>
@@ -56,10 +56,25 @@ export const ContactsList = ({ searchFilter, contacts }) => {
                             || lastName.toLowerCase().includes(search)
                         );
                     })
+                    .sort((a, b) => compare(a.firstName, b.firstName))
                     .map((contact) => {
-                        return <Contact key={contact.id} contact={contact} />;
+                        return (
+                            <ListItem
+                                key={contact.id}
+                                button
+                                sx={{p: 0}}
+                            >
+                                <Contact contact={contact} />
+                            </ListItem>
+                        )
                     })
             }
         </List>
     );
 };
+
+const compare = (a, b) => {
+    if (a > b) return 1;
+    if (a === b) return 0;
+    if (a < b) return -1;
+  }

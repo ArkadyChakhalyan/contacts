@@ -62,8 +62,11 @@ export const SigninForm = () => {
             setDisabled(false);
         }
 
-        setLoginError(false);
-        setPasswordError(false);
+        if (password !== '') {
+            setLoginError(false);
+            setPasswordError(false);
+        }
+
     }, [login, password])
 
     return (

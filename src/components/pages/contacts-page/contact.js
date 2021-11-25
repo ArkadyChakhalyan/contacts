@@ -1,7 +1,7 @@
 import {
     Avatar,
     IconButton,
-    ListItem,
+    Box,
     ListItemAvatar,
     ListItemText,
 } from "@mui/material";
@@ -49,9 +49,15 @@ export const Contact = ({ contact }) => {
                 contact={contact}
                 editedPressed={editedPressed}
             />
-            <ListItem 
-                button
-                onClick={onPopupOpen}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '100%',
+                    p: 2
+                }}
+                onClick={onPopupOpen}
+            >
                 <ListItemAvatar>
                     <Avatar src={image}>
                         {image ? '' : shortName}
@@ -73,7 +79,7 @@ export const Contact = ({ contact }) => {
                     onPopupOpen={onPopupOpen}
                     pressEdited={() => setEditedPressed(true)}
                 />
-            </ListItem>
+            </Box>
         </Fragment>
     );
 };
