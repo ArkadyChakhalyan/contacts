@@ -55,14 +55,6 @@ export const Contact = ({ contact }) => {
                 sx={{ p: 2 }}
                 onClick={onPopupOpen}
             >
-                {/* <Box
-            sx={{
-            display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-            p: 2
-        }} */}
-
                 <ListItemAvatar>
                     <Avatar src={image}>
                         {image ? '' : shortName}
