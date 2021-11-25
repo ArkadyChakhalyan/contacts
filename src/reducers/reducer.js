@@ -59,7 +59,7 @@ const onAddContact = (contact, state) => {
         id: id++,
         user: {
             ...user,
-            contacts: newContacts
+            contacts: newContacts.sort((a, b) => a.firstName - b.firstName)
         }
     };
 };
@@ -83,7 +83,7 @@ const onEditContact = (contact, id, state) => {
         ...state,
         user: {
             ...user,
-            contacts: newContacts
+            contacts: newContacts.sort((a, b) => a.firstName - b.firstName)
         }
     };
 };
