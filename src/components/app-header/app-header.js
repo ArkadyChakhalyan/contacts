@@ -31,7 +31,10 @@ export const AppHeader = ({ setSearchFilter }) => {
         >
             <Typography
                 variant="subtitle1"
-                sx={{ ml: 3 }}
+                sx={{
+                    userSelect: 'none',
+                    ml: 3
+                }}
             >
                 Контакты
             </Typography>

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export const ContactData = ({ contact, edit, state, onEdit, onSubmit }) => {
+export const ContactData = ({ contact, edit, onSubmit }) => {
 
     const { firstName, lastName, number } = contact;
 
@@ -34,33 +34,15 @@ export const ContactData = ({ contact, edit, state, onEdit, onSubmit }) => {
     }, [newFirstName, newNumber])
 
     const onFirstNameChange = (e) => {
-
         setNewFirstName(e.target.value);
-
-        onEdit({
-            ...state,
-            firstName: e.target.value
-        });
     };
 
     const onLastNameChange = (e) => {
-
         setNewLastName(e.target.value);
-
-        onEdit({
-            ...state,
-            lastName: e.target.value
-        });
     };
 
     const onNumberChange = (e) => {
-
         setNewNumber(e.target.value);
-
-        onEdit({
-            ...state,
-            number: e.target.value
-        });
     };
 
     if (edit) {
@@ -79,6 +61,8 @@ export const ContactData = ({ contact, edit, state, onEdit, onSubmit }) => {
                 <TextField
                     required
                     label="Имя"
+                    id='firstName'
+                    name='firstName'
                     variant="standard"
                     value={newFirstName}
                     onChange={onFirstNameChange}
@@ -87,6 +71,8 @@ export const ContactData = ({ contact, edit, state, onEdit, onSubmit }) => {
                 />
                 <TextField
                     label="Фамилия"
+                    id='lastName'
+                    name='lastName'
                     variant="standard"
                     size='small'
                     value={newLastName}
@@ -95,6 +81,8 @@ export const ContactData = ({ contact, edit, state, onEdit, onSubmit }) => {
                 <TextField
                     required
                     label="Номер"
+                    id='number'
+                    name='number'
                     variant="standard"
                     size='small'
                     value={newNumber}

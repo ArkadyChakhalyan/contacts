@@ -161,7 +161,6 @@ export const NewContactPopup = ({ open, onClose }) => {
                     >
                         Отменить
                     </Button>
-
                 </Box>
             </Fade>
         </Modal>

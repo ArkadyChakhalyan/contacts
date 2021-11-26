@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 import MoreIcon from '@mui/icons-material/MoreHoriz';
 import { ContactMenu } from "./menu";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { ContactPopup } from "./popups/contact-popup";
 
-export const Contact = ({ contact }) => {
+export const Contact = ({ contact, loading }) => {
 
     const { firstName, lastName, number, shortName, image, id } = contact;
 
@@ -32,7 +32,7 @@ export const Contact = ({ contact }) => {
     };
 
     const [popupOpen, setPopupOpen] = useState(false);
-    const [editedPressed, setEditedPressed] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     const onPopupOpen = () => {
         setPopupOpen(true);
@@ -40,20 +40,8 @@ export const Contact = ({ contact }) => {
 
     const onPopupClose = () => {
         setPopupOpen(false);
-        setEditedPressed(false);
+        setEdit(false);
     };
-
-    const [loading, setLoading] = useState(true);
-    
-    useEffect(() => {
-        let update = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => {
-            clearTimeout(update);
-        }
-    })
 
     return (
         <Fragment>
@@ -61,7 +49,9 @@ export const Contact = ({ contact }) => {
                 open={popupOpen}
                 onPopupClose={onPopupClose}
                 contact={contact}
-                editedPressed={editedPressed}
+                setEditOn={() => setEdit(true)}
+                setEditOff={() => setEdit(false)}
+                edit={edit}
             />
             <ListItem
                 key={id}
@@ -98,8 +88,8 @@ export const Contact = ({ contact }) => {
                         loading ?
                             (
                                 <ListItemText>
-                                    <Skeleton animation="wave" width={160}/>
-                                    <Skeleton animation="wave"  width={96}/>
+                                    <Skeleton animation="wave" width={160} />
+                                    <Skeleton animation="wave" width={96} />
                                 </ListItemText>
                             ) : (
                                 <ListItemText primary={displayName} secondary={number} />
@@ -114,7 +104,7 @@ export const Contact = ({ contact }) => {
                 anchor={anchor}
                 contact={contact}
                 onPopupOpen={onPopupOpen}
-                pressEdited={() => setEditedPressed(true)}
+                setEditedPressed={() => setEdit(true)}
             />
         </Fragment>
     );

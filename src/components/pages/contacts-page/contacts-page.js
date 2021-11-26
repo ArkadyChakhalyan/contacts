@@ -42,6 +42,7 @@ export const ContactsPage = () => {
                     <Fab 
                     color="primary" 
                     aria-label="Добавить контакт"
+                    disableFocusRipple
                     onClick={onAdd}
                     sx={{
                         position: 'fixed',

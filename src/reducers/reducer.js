@@ -45,7 +45,7 @@ const onAddContact = (contact, state) => {
         id: uniqueId,
         firstName: firstName,
         lastName: lastName,
-        shortName: firstName[0],
+        shortName: firstName[0].toUpperCase(),
         number: number
     }
     
@@ -56,7 +56,7 @@ const onAddContact = (contact, state) => {
 
     return {
         ...state,
-        uniqueId: uniqueId++,
+        uniqueId: ++uniqueId,
         user: {
             ...user,
             contacts: newContacts

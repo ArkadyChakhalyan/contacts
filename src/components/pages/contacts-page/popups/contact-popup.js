@@ -12,7 +12,6 @@ import { ContactData } from './contact-data';
 import { useDispatch } from "react-redux";
 import { onDeleteContact, onEditContact } from '../../../../actions/actions';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
 
 const style = {
     position: 'absolute',
@@ -29,7 +28,7 @@ const style = {
     alignItems: 'center'
 };
 
-export const ContactPopup = ({ open, onPopupClose, contact, editedPressed }) => {
+export const ContactPopup = ({ open, onPopupClose, contact, edit, setEditOff, setEditOn }) => {
 
     const dispatch = useDispatch();
 
@@ -37,22 +36,27 @@ export const ContactPopup = ({ open, onPopupClose, contact, editedPressed }) => 
 
     const displayName = lastName ? `${firstName} ${lastName}` : firstName;
 
-    const [edit, setEdit] = useState(editedPressed);
+    const onSave = (e) => {
 
-    const onEdit = () => {
-        setEdit(true);
-    };
+        e.preventDefault();
 
-    const [editedContact, setEditedContact] = useState({ ...contact });
+        const data = new FormData(e.currentTarget);
 
-    const onSave = () => {
-        setEdit(false);
+        setEditOff();
+
+        const editedContact = {
+            ...contact,
+            firstName: data.get('firstName'),
+            lastName: data.get('lastName'),
+            number: data.get('number')
+        };
+
         dispatch(onEditContact(editedContact, id));
     };
 
     const onClose = () => {
         onPopupClose();
-        setEdit(false);
+        setEditOff();
     };
 
     const onDelete = () => {
@@ -103,22 +107,21 @@ export const ContactPopup = ({ open, onPopupClose, contact, editedPressed }) => 
                     </Typography>
                     <ContactData
                         contact={contact}
-                        edit={edit}
-                        onEdit={setEditedContact}
-                        state={editedContact}
+                        edit={edit}                         
                         onSubmit={onSave}
                     />
                     {
                         !edit ?
-                            <Button
-                                sx={{ mt: 2 }}
-                                fullWidth
-                                size='large'
-                                onClick={onEdit}
-                            >
-                                Изменить
-                            </Button>
-                            : null
+                            (
+                                <Button
+                                    sx={{ mt: 2 }}
+                                    fullWidth
+                                    size='large'
+                                    onClick={setEditOn}
+                                >
+                                    Изменить
+                                </Button>
+                            ) : null
                     }
                     <Button
                         size='large'

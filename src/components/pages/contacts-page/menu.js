@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { onDeleteContact } from "../../../actions/actions";
 import { useDispatch } from "react-redux";
 
-export const ContactMenu = ({ open, onClose, anchor, contact, onPopupOpen, pressEdited }) => {
+export const ContactMenu = ({ open, onClose, anchor, contact, onPopupOpen, setEditedPressed }) => {
 
     const { id } = contact;
 
@@ -20,8 +20,8 @@ export const ContactMenu = ({ open, onClose, anchor, contact, onPopupOpen, press
     };
 
     const onEdit = () => {
+        setEditedPressed();
         onPopupOpen();
-        pressEdited();
         onClose();
     }
 
