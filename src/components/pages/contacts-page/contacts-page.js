@@ -1,6 +1,6 @@
 import {
-    IconButton,
     Container,
+    Fab,
 } from '@mui/material';
 import { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -39,19 +39,17 @@ export const ContactsPage = () => {
                         searchFilter={searchFilter}
                         contacts={user.contacts}
                     />
-                    <IconButton
-                        aria-label="Добавить контакт"
-                        size='large'
-                        color='primary'
-                        sx={{
-                            position: 'fixed',
-                            right: '32px',
-                            bottom: '32px'
-                        }}
-                        onClick={onAdd}
-                    >
-                        <AddIcon sx={{ fontSize: 32 }} />
-                    </IconButton>
+                    <Fab 
+                    color="primary" 
+                    aria-label="Добавить контакт"
+                    onClick={onAdd}
+                    sx={{
+                        position: 'fixed',
+                        right: '32px',
+                        bottom: '32px'
+                    }}>
+                        <AddIcon />
+                    </Fab>
                 </Container>
             </Fragment >
         );

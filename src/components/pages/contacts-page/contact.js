@@ -3,11 +3,13 @@ import {
     IconButton,
     ListItem,
     ListItemAvatar,
+    ListItemButton,
     ListItemText,
+    Skeleton
 } from "@mui/material";
 import MoreIcon from '@mui/icons-material/MoreHoriz';
 import { ContactMenu } from "./menu";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ContactPopup } from "./popups/contact-popup";
 
 export const Contact = ({ contact }) => {
@@ -41,6 +43,18 @@ export const Contact = ({ contact }) => {
         setEditedPressed(false);
     };
 
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(() => {
+        let update = setTimeout(() => {
+            setLoading(false);
+        }, 1000);
+
+        return () => {
+            clearTimeout(update);
+        }
+    })
+
     return (
         <Fragment>
             <ContactPopup
@@ -51,32 +65,57 @@ export const Contact = ({ contact }) => {
             />
             <ListItem
                 key={id}
-                button
-                sx={{ p: 2 }}
-                onClick={onPopupOpen}
+                disablePadding
+                secondaryAction={
+                    loading ? null
+                        :
+                        <IconButton
+                            edge="end"
+                            aria-label="Меню"
+                            onClick={onMenuOpen}
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                }
             >
-                <ListItemAvatar>
-                    <Avatar src={image}>
-                        {image ? '' : shortName}
-                    </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={displayName} secondary={number} />
-                <IconButton
-                    edge="end"
-                    aria-label="Меню"
-                    onClick={onMenuOpen}
+                <ListItemButton
+                    onClick={onPopupOpen}
+                    sx={{ p: 2 }}
                 >
-                    <MoreIcon />
-                </IconButton>
-                <ContactMenu
-                    open={menuOpen}
-                    onClose={onMenuClose}
-                    anchor={anchor}
-                    contact={contact}
-                    onPopupOpen={onPopupOpen}
-                    pressEdited={() => setEditedPressed(true)}
-                />
+                    <ListItemAvatar>
+                        {
+                            loading ?
+                                (
+                                    <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                                ) : (
+                                    <Avatar src={image}>
+                                        {image ? '' : shortName}
+                                    </Avatar>
+                                )
+                        }
+                    </ListItemAvatar>
+                    {
+                        loading ?
+                            (
+                                <ListItemText>
+                                    <Skeleton animation="wave" width={160}/>
+                                    <Skeleton animation="wave"  width={96}/>
+                                </ListItemText>
+                            ) : (
+                                <ListItemText primary={displayName} secondary={number} />
+                            )
+                    }
+
+                </ListItemButton>
             </ ListItem>
+            <ContactMenu
+                open={menuOpen}
+                onClose={onMenuClose}
+                anchor={anchor}
+                contact={contact}
+                onPopupOpen={onPopupOpen}
+                pressEdited={() => setEditedPressed(true)}
+            />
         </Fragment>
     );
 };
