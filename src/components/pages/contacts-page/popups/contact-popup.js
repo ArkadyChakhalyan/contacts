@@ -1,13 +1,11 @@
-import {
-    Avatar,
-    Modal,
-    Fade,
-    Box,
-    Backdrop,
-    Typography,
-    Button,
-    IconButton
-} from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import Backdrop from '@mui/material/Backdrop';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import Fade from '@mui/material/Fade';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import { ContactData } from './contact-data';
 import { useDispatch } from "react-redux";
 import { onDeleteContact, onEditContact } from '../../../../actions/actions';

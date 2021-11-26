@@ -1,4 +1,5 @@
-import { List, Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
 import { useEffect, useState } from 'react';
 import { Contact } from './contact';
 

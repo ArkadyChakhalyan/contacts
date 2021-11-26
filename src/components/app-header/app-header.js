@@ -1,10 +1,8 @@
-import {
-    Box,
-    AppBar,
-    Typography,
-    Button,
-    Avatar
-} from '@mui/material';
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { onLogout } from '../../actions/actions';

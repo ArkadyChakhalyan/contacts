@@ -1,11 +1,9 @@
-import {
-    List,
-    ListItem,
-    Typography,
-    TextField,
-    Button,
-    Box
-} from "@mui/material";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import { useEffect, useState } from "react";
 
 export const ContactData = ({ contact, edit, onSubmit }) => {
