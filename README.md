@@ -15,7 +15,7 @@ git clone https://github.com/ArkadyChakhalyan/contacts.git
 
 Downloads all the files from git repository.\
 ``` code
-npm install ArkadyChakhalyan/contacts
+npm install
 ```
 Runs the app in the development mode.\
 
