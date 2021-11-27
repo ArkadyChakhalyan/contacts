@@ -33,7 +33,9 @@ export const Contact = ({ contact, loading }) => {
     const [edit, setEdit] = useState(false);
 
     const onPopupOpen = () => {
-        setPopupOpen(true);
+        setTimeout(() => {
+            setPopupOpen(true);
+        }, 300);
     };
 
     const onPopupClose = () => {

@@ -71,7 +71,7 @@ export const ContactPopup = ({ open, onPopupClose, contact, edit, setEditOff, se
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
-                timeout: 500,
+                timeout: 600,
             }}
         >
             <Fade in={open}>
