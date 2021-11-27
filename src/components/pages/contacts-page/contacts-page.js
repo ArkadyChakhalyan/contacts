@@ -1,4 +1,5 @@
 import Container from '@mui/material/Container';
+import Tooltip from '@mui/material/Tooltip';
 import Fab from '@mui/material/Fab';
 import { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +7,7 @@ import { Navigate } from 'react-router';
 import { AppHeader } from '../../app-header/app-header';
 import AddIcon from '@mui/icons-material/Add';
 import { ContactsList } from './contacts-list';
+import Fade from '@mui/material/Fade';
 import { NewContactPopup } from './popups/new-contact-popup';
 
 export const ContactsPage = () => {
@@ -37,18 +39,26 @@ export const ContactsPage = () => {
                         searchFilter={searchFilter}
                         contacts={user.contacts}
                     />
-                    <Fab 
-                    color="primary" 
-                    aria-label="Добавить контакт"
-                    disableFocusRipple
-                    onClick={onAdd}
-                    sx={{
-                        position: 'fixed',
-                        right: '32px',
-                        bottom: '32px'
-                    }}>
-                        <AddIcon />
-                    </Fab>
+                    <Tooltip
+                        placement="left"
+                        TransitionComponent={Fade}
+                        enterDelay={500} 
+                        leaveDelay={200}
+                        title="Добавить контакт"
+                    >
+                        <Fab
+                            color="primary"
+                            aria-label="Добавить контакт"
+                            disableFocusRipple
+                            onClick={onAdd}
+                            sx={{
+                                position: 'fixed',
+                                right: '32px',
+                                bottom: '32px'
+                            }}>
+                            <AddIcon />
+                        </Fab>
+                    </Tooltip>
                 </Container>
             </Fragment >
         );

@@ -2,7 +2,7 @@ export const users = [
     {
         login: 'user',
         password: 'password',
-        contacts: [
+        contacts: [ 
             {
                 id: 0,
                 firstName: 'Алена',

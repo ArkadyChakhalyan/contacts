@@ -17,7 +17,12 @@ export const SigninPage = () => {
                     alignItems: 'center',
                 }}
             >
-                <Avatar sx={{ m: 2 }} />
+                <Avatar sx={{
+                    m: 2,
+                    width: 56,
+                    height: 56
+                }}
+                />
                 <Typography component="h1" variant="h5">
                     Вход в личный кабинет
                 </Typography>
