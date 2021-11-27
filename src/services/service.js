@@ -19,7 +19,6 @@ export default class Service {
                 } else {
                     reject(new Error('Такого пользователя не существует'));
                 }
-
             }, 100);
 
         });
