@@ -9,20 +9,25 @@ For signin in and testing the app use 'user' login and 'password' as a password.
 ## Available Scripts
 
 In the project directory, you can run:
-
-### `git clone https://github.com/ArkadyChakhalyan/contacts.git`
+``` code
+git clone https://github.com/ArkadyChakhalyan/contacts.git
+```
 
 Downloads all the files from git repository.\
-
-### `npm install ArkadyChakhalyan/contacts`
-
+``` code
+npm install ArkadyChakhalyan/contacts
+```
 Runs the app in the development mode.\
 
-### `npm start`
+``` code
+`npm start`
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run build`
+``` code
+`npm run build`
+```
 
 Builds the app for production to the `build` folder.\
